@@ -61,6 +61,56 @@ Training and validation accuracy and loss are plotted for both models to visuali
 - tensorflow
 - matplotlib
 
+## Discussion on Optimization Techniques
+
+### Overview
+In this project, several optimization techniques were employed to enhance the performance and generalization ability of the neural network models. These techniques help mitigate overfitting, improve convergence, and achieve better accuracy on unseen data.
+
+### Dropout Layers
+**Principle:**
+Dropout is a regularization technique that randomly sets a fraction of the input units to 0 at each update during training time, which helps prevent overfitting.
+
+**Relevance to the Project:**
+Incorporating dropout layers in the neural network (Model 2) helps in reducing overfitting by ensuring that the model does not rely too heavily on any individual neurons. This promotes the development of robust features that generalize well to new data.
+
+**Parameters:**
+- Dropout rate: 0.3
+
+**Justification:**
+A dropout rate of 0.3 was chosen based on empirical evidence from literature and experimentation. This value strikes a balance by providing sufficient regularization without overly hindering the learning capacity of the network.
+
+### Learning Rate Scheduling
+**Principle:**
+Learning rate scheduling involves adjusting the learning rate during training. A common approach is to reduce the learning rate as training progresses, which allows for more precise adjustments to the model weights.
+
+**Relevance to the Project:**
+Using a learning rate schedule helps in fine-tuning the model during later stages of training, which can lead to better convergence and improved performance. It prevents the model from overshooting the optimal point and helps in settling into a minimum.
+
+**Parameters:**
+- Initial learning rate: Custom value (e.g., 0.001)
+- Learning rate reduction: Applied based on validation performance.
+
+**Justification:**
+The initial learning rate was set to a typical value used in practice. The learning rate is reduced when the validation performance plateaus, ensuring that the model makes finer adjustments as it nears convergence.
+
+### Early Stopping
+**Principle:**
+Early stopping monitors the model's performance on a validation set and stops training when performance stops improving, thereby preventing overfitting.
+
+**Relevance to the Project:**
+Early stopping is crucial for avoiding overfitting, especially when training deep neural networks. It helps in identifying the optimal point for halting training, ensuring that the model retains good generalization capability.
+
+**Parameters:**
+- Patience: Number of epochs to wait for an improvement before stopping (e.g., 10 epochs).
+
+**Justification:**
+A patience value of 10 epochs was chosen to allow the model sufficient opportunity to improve after a plateau. This value was selected based on experimentation and typical values used in the field.
+
+### Summary of Parameter Selection
+The parameter values for each optimization technique were selected through a combination of literature review, empirical testing, and cross-validation. The aim was to find a configuration that provides a good trade-off between model complexity, training time, and performance on the validation set.
+
+By employing these optimization techniques, the project aims to develop neural network models that are robust, have good generalization capabilities, and perform well on the test data.
+
 ## Usage
 1. Ensure all dependencies are installed.
 2. Update the file path in the code to point to your dataset.
